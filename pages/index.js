@@ -1,8 +1,21 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { buildUrl } from 'cloudinary-build-url';
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  const url = buildUrl('galaxy_ne5p8f', {
+    cloud: {
+      cloudName: 'fay',
+    },
+    transformations: {
+      effect: {
+        name: 'pixelate',
+        value: 40
+      }
+    }
+  });
+
   return (
     <div className={styles.container}>
       <Head>
@@ -36,13 +49,15 @@ export default function Home() {
             <h3>Cloudinary - Static</h3>
           </div>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+          <div className={styles.card}>
+            <Image
+              src={url}
+              alt="Galaxy"
+              width={1000}
+              height={750}
+            />
+            <h3>Cloudinary - Dynamic</h3>
+          </div>
 
           <a
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
