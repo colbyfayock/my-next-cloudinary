@@ -16,6 +16,16 @@ export default function Home() {
     }
   });
 
+  const urlBlurred = buildUrl('galaxy_ne5p8f', {
+    cloud: {
+      cloudName: 'fay',
+    },
+    transformations: {
+      effect: "blur:1000",
+      quality: 1
+    }
+  })
+
   return (
     <div className={styles.container}>
       <Head>
@@ -59,15 +69,31 @@ export default function Home() {
             <h3>Cloudinary - Dynamic</h3>
           </div>
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          <div className={styles.card}>
+            <div style={{
+              position: 'relative',
+              height: 0,
+              paddingTop: `${( 750 / 1000 ) * 100}%`,
+              backgroundImage: `url(${urlBlurred})`,
+              backgroundPosition: 'center center',
+              backgroundSize: `100%`
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0
+              }}>
+                <Image
+                  src={url}
+                  alt="Galaxy"
+                  width={1000}
+                  height={750}
+                  unoptimized={true}
+                />
+              </div>
+            </div>
+            <h3>Cloudinary - Blurred Placeholder</h3>
+          </div>
         </div>
       </main>
 
