@@ -26,10 +26,15 @@ export default function Home() {
             <h3>Local Image</h3>
           </div>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+          <div className={styles.card}>
+            <Image
+              src="https://res.cloudinary.com/fay/image/upload/v1617047570/galaxy_ne5p8f.jpg"
+              alt="Galaxy"
+              width={1000}
+              height={750}
+            />
+            <h3>Cloudinary - Static</h3>
+          </div>
 
           <a
             href="https://github.com/vercel/next.js/tree/master/examples"
