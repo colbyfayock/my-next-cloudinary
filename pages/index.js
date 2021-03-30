@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
 import { buildUrl } from 'cloudinary-build-url';
@@ -24,7 +25,15 @@ export default function Home() {
       effect: "blur:1000",
       quality: 1
     }
-  })
+  });
+
+  const [image, setImage] = useState();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setImage(url);
+    }, 2000)
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -83,13 +92,14 @@ export default function Home() {
                 top: 0,
                 left: 0
               }}>
-                <Image
-                  src={url}
-                  alt="Galaxy"
-                  width={1000}
-                  height={750}
-                  unoptimized={true}
-                />
+                {image && (
+                  <Image
+                    src={image}
+                    alt="Galaxy"
+                    width={1000}
+                    height={750}
+                  />
+                )}
               </div>
             </div>
             <h3>Cloudinary - Blurred Placeholder</h3>
